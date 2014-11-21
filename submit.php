@@ -51,7 +51,7 @@ if ($_POST) {
 				':justification' => $justification,
 				':availability' => $availability
 				)
-			)
+			);
 
 		$out .= "<p>Your application was submitted successfully";
 
