@@ -8,11 +8,7 @@
  */
 
 require_once('../../../credentials.php');
-require_once('../../storymod/inc/lib.php');
-
-
-error_reporting(E_ALL);
-ini_set('display_errors', '1');
+require_once("functions.php");
 
 $out = NULL;
 
@@ -33,7 +29,6 @@ if ($_POST) {
 		$availability = implode(', ', $_POST['availability']);
 	} 
 
-	
 	if (db_connect()) {
 
 		// build query
@@ -57,10 +52,14 @@ if ($_POST) {
 					)
 				);
 
-			$out .= "<p>Your application was submitted successfully</p>";
+			$out .= "
+			<h1>Thanks!</h1>
+			<p>Your application was submitted successfully, and will be reviewed by a member of the ASMDSS staff.</p>
+			";
 
 		} catch (PDOException $e) {
 			$out .= "ERROR:" . $e->getMessage();
+			die;
 		}
 	}
 
