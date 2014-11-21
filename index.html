@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <link href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
+    <link href='darkstrap.css' rel='stylesheet' />
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+    <title>ASMDSS: Moderator Application</title>
+</head>
+
+<body>
+    <div class="container">
+      
+        <div class="col-sm-8 col-sm-offset-2">
+            <h1>ASMDSS <small>Moderator Application</small></h1>
+	</div>
+
+<form enctype="multipart/form-data" method="post" action="submit.php" accept-charset="UTF-8">
+	<div>
+		<input type="hidden" name="required_vars" id="required_vars" value="name,email," />
+	</div>
+	<table cellspacing="5" cellpadding="5" border="0">
+		<tr>
+			<td valign="top">
+				<strong>Name:</strong>
+			</td>
+			<td valign="top">
+				<input type="text" name="name" id="name" size="40" value="" />
+				
+			</td>
+		</tr>
+		<tr>
+			<td valign="top">
+				<strong>Email Address:</strong>
+			</td>
+			<td valign="top">
+				<input type="text" name="email" id="email" size="40" value="" />
+				
+			</td>
+		</tr>
+		<tr>
+			<td valign="top">
+				<strong>Facebook profile:</strong>
+			</td>
+			<td valign="top">
+				<input type="text" name="fb-profile" id="fb-profile" size="40" value="" />
+				
+			</td>
+		</tr>
+		<tr>
+			<td valign="top">
+				<strong>Availability</strong>
+			</td>
+			<td valign="top">
+				<input type="checkbox" name="availability-m[]" id="availability-m" value="Morning" /> Morning<br/>
+				<input type="checkbox" name="availability-a[]" id="availability-a" value="Afternoon" /> Afternoon<br/>
+				<input type="checkbox" name="availability-n[]" id="availability-n" value="Nights" /> Nights<br/>
+				
+			</td>
+		</tr>
+		<tr>
+			<td valign="top">
+				<strong>How often are you at a computer or easily reachable?</strong>
+			</td>
+			<td valign="top">
+				<textarea name="comptime" id="comptime" rows="6" cols="40"></textarea>
+				
+			</td>
+		</tr>
+		<tr>
+			<td valign="top">
+				<strong>Military experience?</strong>
+			</td>
+			<td valign="top">
+				<textarea name="experience" id="experience" rows="6" cols="40"></textarea>
+				
+			</td>
+		</tr>
+		<tr>
+			<td valign="top">
+				<strong>What other skills do you bring to the table? (Tech, Research, professional certs or web experience)</strong>
+			</td>
+			<td valign="top">
+				<textarea name="otherskills" id="otherskills" rows="6" cols="40"></textarea>
+				
+			</td>
+		</tr>
+		<tr>
+			<td valign="top">
+				<strong>Why should we choose you to become a part of the ASMDSS Team?</strong>
+			</td>
+			<td valign="top">
+				<textarea name="whythefuckshouldicare" id="whythefuckshouldicare" rows="6" cols="40"></textarea>
+				
+			</td>
+		</tr>
+		<tr>
+			<td colspan="2" align="center">
+				<input type="submit" value=" Submit Form " />
+			</td>
+		</tr>
+	</table>
+</form>
+	</div>
+  </body>
+</html>
+
