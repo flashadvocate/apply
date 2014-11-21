@@ -7,6 +7,7 @@
  * can be developed that houses all applications.
  */
 
+// FETCH DEPENDENCIES
 require_once('../../../credentials.php');
 require_once("functions.php");
 
@@ -29,8 +30,10 @@ if ($_POST) {
 		$availability = implode(', ', $_POST['availability']);
 	} 
 
+	// CREATE DB OBJECT
 	if (db_connect()) {
 
+		// DOES APP EXIST?
 		if (!doesAppExist($email)) {
 
 			// BUILD QUERY
@@ -53,6 +56,7 @@ if ($_POST) {
 						)
 					);
 
+				// FORM SUCCESSFUL
 				$out .= "
 				<h1>Thanks!</h1>
 				<p>Your application was submitted successfully, and will be reviewed by a member of the ASMDSS staff.</p>
@@ -63,15 +67,16 @@ if ($_POST) {
 				$out .= "ERROR:" . $e->getMessage();
 				die;
 			}
-		}
 
-	// EXISTING APPLICATION (OR EMAIL USED ALREADY)
-	} else {
-		$out .= "
-		<h1>Oops!</h1>
-		<p>It looks like an application has already been submitted using that email address.</p>
-		<p>If you have already submitted an application, please be patient and we will get back to you as soon as possible.</p>
-		";
+
+		// EXISTING APPLICATION (OR EMAIL USED ALREADY)
+		} else {
+			$out .= "
+			<h1>Oops!</h1>
+			<p>It looks like an application has already been submitted using that email address.</p>
+			<p>If you have already submitted an application, please be patient and we will get back to you as soon as possible.</p>
+			";
+		}
 	}
 
 // SUCCESS
@@ -83,6 +88,7 @@ if ($_POST) {
 	die;
 }
 
+// DONE
 echo $out;
 die;
 
