@@ -12,10 +12,10 @@ require_once("functions.php");
 
 $out = NULL;
 
-// did we get any form data?
+// DID WE GET ANY FORM DATA?
 if ($_POST) {
 
-	// fetch form values
+	// FETCH FORM VALUES
 	$name = $_POST['name'];
 	$email = $_POST['email'];
 	$fb_profile = $_POST['fb-profile'];
@@ -24,13 +24,12 @@ if ($_POST) {
 	$otherskills = $_POST['otherskills'];
 	$justification = $_POST['justification'];
 
-	// merge availability
+	// MERGE AVAILABILITY
 	if (isset($_POST['availability']) && is_array($_POST['availability'])) {
 		$availability = implode(', ', $_POST['availability']);
 	} 
 
 	if (db_connect()) {
-
 
 		if (!doesAppExist($email)) {
 
@@ -38,10 +37,9 @@ if ($_POST) {
 			$query = "INSERT INTO `asmdss_apply`.`moderator_apps` (name, email, facebook_profile, availability, comptime, mil_exp, other_skills, justification)	VALUES (:name, :email, :profile, :availability, :comptime, :mil_exp, :other, :justification);";
 			$stmt = $pdo->prepare($query);
 
-
 			try {
 
-				// associate placeholders with values
+				// ASSOCIATE PLACEHOLDERS WITH VALUES
 				$stmt->execute(
 					array(
 						':name' => $name,
