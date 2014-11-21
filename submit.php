@@ -7,8 +7,12 @@
  * can be developed that houses all applications.
  */
 
-require_once('../../credentials.php');
-require_once('../storymod/lib.php');
+require_once('../../../credentials.php');
+require_once('../../storymod/inc/lib.php');
+
+
+error_reporting(E_ALL);
+ini_set('display_errors', '1');
 
 $out = NULL;
 
@@ -29,35 +33,35 @@ if ($_POST) {
 		$availability = implode(', ', $_POST['availability']);
 	} 
 
-	// instantiate PDO 
-	global $pdo;
+	
+	if (db_connect()) {
 
-	// build query
-	$query = "INSERT INTO asmdss_apply.moderator_apps (name, email, facebook_profile, availability, comptime, mil_exp, other_skills, justification)	VALUES (:name, :email, :profile, :availability, :comptime, :mil_exp, :other, :justification);";
-	$stmt = $pdo->prepare($query);
+		// build query
+		$query = "INSERT INTO `asmdss_apply`.`moderator_apps` (name, email, facebook_profile, availability, comptime, mil_exp, other_skills, justification)	VALUES (:name, :email, :profile, :availability, :comptime, :mil_exp, :other, :justification);";
+		$stmt = $pdo->prepare($query);
 
 
-	try {
+		try {
 
-		// associate placeholders with values
-		$stmt->execute(
-			array(
-				':name' => $name,
-				':email' => $email,
-				':profile' => $fb_profile,
-				':comptime' => $name,
-				':mil_exp' => $experience,
-				':other' => $otherskills,
-				':justification' => $justification,
-				':availability' => $availability
-				)
-			);
+			// associate placeholders with values
+			$stmt->execute(
+				array(
+					':name' => $name,
+					':email' => $email,
+					':profile' => $fb_profile,
+					':comptime' => $name,
+					':mil_exp' => $experience,
+					':other' => $otherskills,
+					':justification' => $justification,
+					':availability' => $availability
+					)
+				);
 
-		$out .= "<p>Your application was submitted successfully";
+			$out .= "<p>Your application was submitted successfully</p>";
 
-	} catch (PDOException $e) {
-		echo "ERROR:" . $e->getMessage();
-		die;
+		} catch (PDOException $e) {
+			$out .= "ERROR:" . $e->getMessage();
+		}
 	}
 
 } else {
@@ -66,5 +70,6 @@ if ($_POST) {
 }
 
 echo $out;
+die;
 
 ?>	
