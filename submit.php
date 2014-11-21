@@ -34,14 +34,14 @@ if ($_POST) {
 
 		if (!doesAppExist($email)) {
 
-		// build query
+			// build query
 			$query = "INSERT INTO `asmdss_apply`.`moderator_apps` (name, email, facebook_profile, availability, comptime, mil_exp, other_skills, justification)	VALUES (:name, :email, :profile, :availability, :comptime, :mil_exp, :other, :justification);";
 			$stmt = $pdo->prepare($query);
 
 
 			try {
 
-			// associate placeholders with values
+				// associate placeholders with values
 				$stmt->execute(
 					array(
 						':name' => $name,
@@ -60,11 +60,14 @@ if ($_POST) {
 				<p>Your application was submitted successfully, and will be reviewed by a member of the ASMDSS staff.</p>
 				";
 
+			// PDO ERROR!
 			} catch (PDOException $e) {
 				$out .= "ERROR:" . $e->getMessage();
 				die;
 			}
 		}
+
+	// EXISTING APPLICATION (OR EMAIL USED ALREADY)
 	} else {
 		$out .= "
 		<h1>Oops!</h1>
@@ -73,10 +76,11 @@ if ($_POST) {
 		";
 	}
 
+// SUCCESS
 } else {
 	$out .= "
-	<h1>Thanks!</h1>
-	<p>Your application was submitted successfully, and will be reviewed by a member of the ASMDSS staff.</p>
+	<h1>Oops!</h1>
+	<p>No form data was submitted. Please <a href='http://apply.asmdss.com/moderator/'>complete the form</a> and try again. </p>
 	";
 	die;
 }
