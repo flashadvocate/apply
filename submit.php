@@ -31,40 +31,53 @@ if ($_POST) {
 
 	if (db_connect()) {
 
+
+		if (!doesAppExist($email)) {
+
 		// build query
-		$query = "INSERT INTO `asmdss_apply`.`moderator_apps` (name, email, facebook_profile, availability, comptime, mil_exp, other_skills, justification)	VALUES (:name, :email, :profile, :availability, :comptime, :mil_exp, :other, :justification);";
-		$stmt = $pdo->prepare($query);
+			$query = "INSERT INTO `asmdss_apply`.`moderator_apps` (name, email, facebook_profile, availability, comptime, mil_exp, other_skills, justification)	VALUES (:name, :email, :profile, :availability, :comptime, :mil_exp, :other, :justification);";
+			$stmt = $pdo->prepare($query);
 
 
-		try {
+			try {
 
 			// associate placeholders with values
-			$stmt->execute(
-				array(
-					':name' => $name,
-					':email' => $email,
-					':profile' => $fb_profile,
-					':comptime' => $name,
-					':mil_exp' => $experience,
-					':other' => $otherskills,
-					':justification' => $justification,
-					':availability' => $availability
-					)
-				);
+				$stmt->execute(
+					array(
+						':name' => $name,
+						':email' => $email,
+						':profile' => $fb_profile,
+						':comptime' => $name,
+						':mil_exp' => $experience,
+						':other' => $otherskills,
+						':justification' => $justification,
+						':availability' => $availability
+						)
+					);
 
-			$out .= "
-			<h1>Thanks!</h1>
-			<p>Your application was submitted successfully, and will be reviewed by a member of the ASMDSS staff.</p>
-			";
+				$out .= "
+				<h1>Thanks!</h1>
+				<p>Your application was submitted successfully, and will be reviewed by a member of the ASMDSS staff.</p>
+				";
 
-		} catch (PDOException $e) {
-			$out .= "ERROR:" . $e->getMessage();
-			die;
+			} catch (PDOException $e) {
+				$out .= "ERROR:" . $e->getMessage();
+				die;
+			}
 		}
+	} else {
+		$out .= "
+		<h1>Oops!</h1>
+		<p>It looks like an application has already been submitted using that email address.</p>
+		<p>If you have already submitted an application, please be patient and we will get back to you as soon as possible.</p>
+		";
 	}
 
 } else {
-	$out .= "<p>No data was submitted.</p>";
+	$out .= "
+	<h1>Thanks!</h1>
+	<p>Your application was submitted successfully, and will be reviewed by a member of the ASMDSS staff.</p>
+	";
 	die;
 }
 
