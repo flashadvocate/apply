@@ -17,8 +17,6 @@ function db_connect() {
 }
 
 
-
-
 function doesAppExist($email) {
     global $pdo;
     
