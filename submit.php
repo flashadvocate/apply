@@ -33,7 +33,7 @@ if ($_POST) {
 
 		if (!doesAppExist($email)) {
 
-			// build query
+			// BUILD QUERY
 			$query = "INSERT INTO `asmdss_apply`.`moderator_apps` (name, email, facebook_profile, availability, comptime, mil_exp, other_skills, justification)	VALUES (:name, :email, :profile, :availability, :comptime, :mil_exp, :other, :justification);";
 			$stmt = $pdo->prepare($query);
 
