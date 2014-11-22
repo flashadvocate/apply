@@ -8,7 +8,7 @@
  */
 
 // FETCH DEPENDENCIES
-require_once('../../../credentials.php');
+require_once('../../../../credentials.php');
 require_once("functions.php");
 
 $out = array();
@@ -57,29 +57,26 @@ if ($_POST) {
 					);
 
 				// FORM SUCCESSFUL
-				$out = array('success' > true, 'message' => 'Your form was successfully submitted');
+				$out = array('success' => true, 'message' => 'Your form was successfully submitted');
 
 			// PDO ERROR!
 			} catch (PDOException $e) {
 				$out .= "ERROR:" . $e->getMessage();
-				die;
 			}
 
 
 		// EXISTING APPLICATION (OR EMAIL USED ALREADY)
 		} else {
 			$out = array('success' => false, 'message' => 'It appears an application already exists with that email');
-			die;
 		}
 	}
 
 // SUCCESS
 } else {
 	$out = array('success' => false, 'message' => 'No data was submitted!');
-	die;
 }
 
 // DONE
-echo jscon_encode($out);
+echo json_encode($out);
 
 ?>	

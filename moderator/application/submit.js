@@ -8,10 +8,13 @@ $(document).ready(function() {
 
             function(data) {
                 if (data['success'] === true) {
-                    console.log(data['message']);
+                    $('.message').append('<div class="alert alert-success" role="alert">Your application was successfully submitted.</div>');
+                    $('.alert').slideDown();
+                    $('#mod-app').fadeOut();
 
                 } else if (data['success'] === false) {
-                    console.log(data['message']);
+                    $('.message').append("<div class=\"alert alert-danger\" role=\"alert\">" + data['message'] + "</div>");
+                    $('.alert').slideDown();
                 }
 
             }, 'json');

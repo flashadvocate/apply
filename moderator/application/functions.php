@@ -1,5 +1,7 @@
 <?php
 
+error_reporting(E_ALL);
+ini_set('display_errors', '1');
 
 function db_connect() {
 
@@ -17,27 +19,42 @@ function db_connect() {
 }
 
 
-function doesAppExist($email) {
+
+
+function doesAppExist($string) {
     global $pdo;
     
     if (db_connect()) {
-        try {
-            $sth = $pdo->prepare('SELECT email FROM `asmdss_apply`.`moderator_apps` WHERE email = :email LIMIT 1');
-            $sth->bindParam(':email', $email);
-            $sth->execute();
-            $user = $sth->fetch(PDO::FETCH_OBJ);
-        }
-        catch (PDOException $e) {
-            echo 'ERROR: ' . $e->getMessage();
+        if (isset($string)) {
+            $string = strtolower($string);
+            
+            try {
+                $sth = $pdo->prepare('SELECT count(*) FROM `asmdss_apply`.`moderator_apps` WHERE email= :email LIMIT 1');
+                $sth->bindParam(':email', $string);
+                $sth->execute();
+                $count = $sth->fetchColumn();
+                
+            }
+            catch (PDOException $e) {
+                echo 'ERROR: ' . $e->getMessage();
+            }
+            
+            if ($count > 0) {
+                return true;
+            } else {
+                return false;
+            }
+            
+            
+            if (!$count) {
+                die('Could not get data (doesAppExist): ' . mysql_error());
+            }
+            
+        } else {
+            die('Cant connect to mysql (userexists)');
         }
     }
-    
-    if ($email === $user->email) {
-        return true;
-    } else {
-        return false;
-    }
-    
 }
+
 
 ?>
