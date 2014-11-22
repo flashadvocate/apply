@@ -11,7 +11,7 @@
 require_once('../../../credentials.php');
 require_once("functions.php");
 
-$out = NULL;
+$out = array();
 
 // DID WE GET ANY FORM DATA?
 if ($_POST) {
@@ -57,10 +57,7 @@ if ($_POST) {
 					);
 
 				// FORM SUCCESSFUL
-				$out .= "
-				<h1>Thanks!</h1>
-				<p>Your application was submitted successfully, and will be reviewed by a member of the ASMDSS staff.</p>
-				";
+				$out[] = ('success' => true, 'message' => 'Your form was successfully submitted');
 
 			// PDO ERROR!
 			} catch (PDOException $e) {
@@ -71,25 +68,18 @@ if ($_POST) {
 
 		// EXISTING APPLICATION (OR EMAIL USED ALREADY)
 		} else {
-			$out .= "
-			<h1>Oops!</h1>
-			<p>It looks like an application has already been submitted using that email address.</p>
-			<p>If you have already submitted an application, please be patient and we will get back to you as soon as possible.</p>
-			";
+			$out[] = ('success' => false, 'message' => 'It appears an application already exists with that email');
+			die;
 		}
 	}
 
 // SUCCESS
 } else {
-	$out .= "
-	<h1>Oops!</h1>
-	<p>No form data was submitted. Please <a href='http://apply.asmdss.com/moderator/'>complete the form</a> and try again. </p>
-	";
+	$out[] = ('success' => false, 'message' => 'No data was submitted!');
 	die;
 }
 
 // DONE
-echo $out;
-die;
+echo jscon_encode($out);
 
 ?>	
