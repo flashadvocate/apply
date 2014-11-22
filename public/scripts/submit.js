@@ -4,7 +4,7 @@ $(document).ready(function() {
     $("#mod-app").submit(function(event) {
         event.preventDefault();
 
-        $.post('application/submit.php',
+        $.post('../../application/submit.php',
 
             $(this).serialize(),
 
