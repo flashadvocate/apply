@@ -53,7 +53,7 @@ if ($_POST) {
 						':other' => $otherskills,
 						':justification' => $justification,
 						':availability' => $availability,
-						':IP' => getIP()
+						':ip' => getIP()
 						)
 					);
 

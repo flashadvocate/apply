@@ -2,3 +2,4 @@
 [22-Nov-2014 12:26:27 America/New_York] PHP Parse error:  syntax error, unexpected ';', expecting ')' in /home/asmdss/public_html/apply/moderator/application/submit.php on line 56
 [22-Nov-2014 12:27:39 America/New_York] PHP Parse error:  syntax error, unexpected ';', expecting ')' in /home/asmdss/public_html/apply/moderator/application/submit.php on line 56
 [22-Nov-2014 12:28:20 America/New_York] PHP Parse error:  syntax error, unexpected '$tmp' (T_VARIABLE) in /home/asmdss/public_html/apply/moderator/application/functions.php on line 39
+[22-Nov-2014 12:29:25 America/New_York] PHP Notice:  Array to string conversion in /home/asmdss/public_html/apply/moderator/application/submit.php on line 65

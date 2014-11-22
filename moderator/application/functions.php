@@ -18,29 +18,23 @@ function db_connect() {
 	return true;
 }
 
-function getIP() 
-{
-    // populate a local variable to avoid extra function calls.
-    // NOTE: use of getenv is not as common as use of $_SERVER.
-    //       because of this use of $_SERVER is recommended, but 
-    //       for consistency, I'll use getenv below
-    $tmp = getenv("HTTP_CLIENT_IP");
-    // you DON'T want the HTTP_CLIENT_ID to equal unknown. That said, I don't
-    // believe it ever will (same for all below)
-    if ( $tmp && !strcasecmp( $tmp, "unknown"))
-        return $tmp;
+function getIP() {
 
-    $tmp = getenv("HTTP_X_FORWARDED_FOR");
-    if( $tmp && !strcasecmp( $tmp, "unknown"))
-        return $tmp;
+    if ( function_exists( 'apache_request_headers' ) ) {
+        $headers = apache_request_headers();
+    } else {
+        $headers = $_SERVER;
+    }
 
-    // no sense in testing SERVER after this. 
-    // $_SERVER[ 'REMOTE_ADDR' ] == gentenv( 'REMOTE_ADDR' );
-    $tmp = getenv("REMOTE_ADDR");
-    if($tmp && !strcasecmp($tmp, "unknown"))
-        return $tmp;
-
-    return("unknown");
+        //Get the forwarded IP if it exists
+    if ( array_key_exists( 'X-Forwarded-For', $headers ) && filter_var( $headers['X-Forwarded-For'], FILTER_VALIDATE_IP, FILTER_FLAG_IPV4 ) ) {
+        $the_ip = $headers['X-Forwarded-For'];
+    } elseif ( array_key_exists( 'HTTP_X_FORWARDED_FOR', $headers ) && filter_var( $headers['HTTP_X_FORWARDED_FOR'], FILTER_VALIDATE_IP, FILTER_FLAG_IPV4 ) ) {
+        $the_ip = $headers['HTTP_X_FORWARDED_FOR'];
+    } else {
+        $the_ip = filter_var( $_SERVER['REMOTE_ADDR'], FILTER_VALIDATE_IP, FILTER_FLAG_IPV4 );
+    }
+    return $the_ip;
 }
 
 function doesAppExist($string) {
