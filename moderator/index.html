@@ -18,112 +18,114 @@
 		<div class="message"></div>
 
 		<p>Thank you for your interest in becoming a part of the ASMDSS staff. Please be as complete and as honest as you can with your information. Please allow 1-2 weeks for us to respond to your application.</p>
-		<p><span class='text-danger'>All fields are required</span>
 		<div style="height: 15px;"></div>
 
 		<form class="form-vertical" method="post" action="application/submit.php" id="mod-app" accept-charset="UTF-8">
 
 			<fieldset>
 
-				<div class="col-md-6">
-					<div class="panel panel-default">
-						<div class="panel-heading">Demographic Information</div>
-						<div class="panel-body">
+				<div id="sub-form">
+					<div class="col-md-6">
+						<div class="panel panel-default">
+							<div class="panel-heading">Demographic Information</div>
+							<div class="panel-body">
 
 
 
-							<!-- Text input-->
-							<div class="form-group">
-								<label class="control-label" for="name">Name</label>
-								<div class="controls">
-									<input id="name" name="name" type="text" placeholder="Pvt. Knuckle Dragger" class="input-xlarge form-control" required>
+								<!-- Text input-->
+								<div class="form-group">
+									<label class="control-label" for="name">Name</label>
+									<div class="controls">
+										<input id="name" name="name" type="text" placeholder="Pvt. Knuckle Dragger" class="input-xlarge form-control" required>
+									</div>
 								</div>
-							</div>
 
-							<!-- Text input-->
-							<div class="form-group email">
-								<label class="control-label" for="email">Email</label>
-								<div class="controls">
-									<input id="email" name="email" type="email" placeholder="ilovemylittlepony@gmail.com" class="input-xlarge form-control" required>
+								<!-- Text input-->
+								<div class="form-group email">
+									<label class="control-label" for="email">Email</label>
+									<div class="controls">
+										<input id="email" name="email" type="email" placeholder="ilovemylittlepony@gmail.com" class="input-xlarge form-control" required>
+									</div>
 								</div>
-							</div>
 
-							<!-- Text input-->
-							<div class="form-group">
-								<label class="control-label" for="fb-profile">Facebook Profile</label>
-								<div class="controls">
-									<input id="fb-profile" name="fb-profile" type="text" placeholder="http://facebook.com/username" class="input-xlarge form-control" required>
+								<!-- Text input-->
+								<div class="form-group">
+									<label class="control-label" for="fb-profile">Facebook Profile</label>
+									<div class="controls">
+										<input id="fb-profile" name="fb-profile" type="text" placeholder="http://facebook.com/username" class="input-xlarge form-control" required>
+									</div>
 								</div>
-							</div>
 
 
-							<!-- Textarea -->
-							<div class="form-group">
-								<label class="control-label" for="comptime">How often are you at a computer or easily reachable?</label>
-								<div class="controls">           
-									<textarea id="comptime" name="comptime" placeholder="All the time, none of the time, leave me alone everytime, etc" class="form-control"></textarea>
+								<!-- Textarea -->
+								<div class="form-group">
+									<label class="control-label" for="comptime">How often are you at a computer or easily reachable?</label>
+									<div class="controls">           
+										<textarea id="comptime" name="comptime" placeholder="All the time, none of the time, leave me alone everytime, etc" class="form-control" required></textarea>
+									</div>
 								</div>
-							</div>
 
 
-							<!-- Multiple Checkboxes -->
-							<div class="form-group">
-								<label class="control-label" for="availability">Availability</label>
-								<div class="controls">
-									<label class="checkbox-inline" for="availability-0">
-										<input type="checkbox" name="availability[]" id="availability-0" value="Morning" checked="checked">
-										Morning
-									</label>
-									<label class="checkbox-inline" for="availability-1">
-										<input type="checkbox" name="availability[]" id="availability-1" value="Afternoon">
-										Afternoon
-									</label>
-									<label class="checkbox-inline" for="availability-2">
-										<input type="checkbox" name="availability[]" id="availability-2" value="Nights">
-										Nights
-									</label>
-								</div>
-							</div>
-						</div>
-					</div>
-
-				</div>
-
-				<div class="col-md-6">
-					<div class="panel panel-default">
-						<div class="panel-heading">Ability-specific information</div>
-						<div class="panel-body">
-
-
-							<!-- Textarea -->
-							<div class="form-group">
-								<label class="control-label" for="experience">Military Experience?</label>
-								<div class="controls">           
-									<textarea id="experience" name="experience" placeholder="Do I need to explain this to you?" class="form-control"></textarea>
-								</div>
-							</div>
-
-							<!-- Textarea -->
-							<div class="form-group">
-								<label class="control-label" for="otherskills">What other skills do you bring to the table? (Tech, Research, professional certs or web experience)</label>
-								<div class="controls">           
-									<textarea id="otherskills" name="otherskills" placeholder="Being able to take an entire fist into your anus doesn't count" class="form-control"></textarea>
-								</div>
-							</div>
-
-							<!-- Textarea -->
-							<div class="form-group">
-								<label class="control-label" for="justification">Why should we choose you to become a part of the ASMDSS Team?</label>
-								<div class="controls">           
-									<textarea style="height: 130px;" id="justification" name="justification" placeholder="Be creative I don't want to hear the same bullshit about how awesome you are" class="form-control"></textarea>
+								<!-- Multiple Checkboxes -->
+								<div class="form-group">
+									<label class="control-label" for="availability">Availability</label>
+									<div class="controls">
+										<label class="checkbox-inline" for="availability-0">
+											<input type="checkbox" name="availability[]" id="availability-0" value="Morning" checked="checked">
+											Morning
+										</label>
+										<label class="checkbox-inline" for="availability-1">
+											<input type="checkbox" name="availability[]" id="availability-1" value="Afternoon">
+											Afternoon
+										</label>
+										<label class="checkbox-inline" for="availability-2">
+											<input type="checkbox" name="availability[]" id="availability-2" value="Nights">
+											Nights
+										</label>
+									</div>
 								</div>
 							</div>
 						</div>
+
 					</div>
 
-				</div>
+					<div class="col-md-6">
+						<div class="panel panel-default">
+							<div class="panel-heading">Ability-specific information</div>
+							<div class="panel-body">
 
+
+								<!-- Textarea -->
+								<div class="form-group">
+									<label class="control-label" for="experience">Military Experience?</label>
+									<div class="controls">           
+										<textarea id="experience" name="experience" placeholder="Do I need to explain this to you?" class="form-control" required></textarea>
+									</div>
+								</div>
+
+								<!-- Textarea -->
+								<div class="form-group">
+									<label class="control-label" for="otherskills">What other skills do you bring to the table? (Tech, Research, professional certs or web experience)</label>
+									<div class="controls">           
+										<textarea id="otherskills" name="otherskills" placeholder="Being able to take an entire fist into your anus doesn't count" class="form-control" required></textarea>
+									</div>
+								</div>
+
+								<!-- Textarea -->
+								<div class="form-group">
+									<label class="control-label" for="justification">Why should we choose you to become a part of the ASMDSS Team?</label>
+									<div class="controls">           
+										<textarea style="height: 130px;" id="justification" name="justification" placeholder="Be creative I don't want to hear the same bullshit about how awesome you are" class="form-control" required></textarea>
+									</div>
+								</div>
+							</div>
+						</div>
+
+					</div>
+				</div>
 			</fieldset>
+			<div style="height: 30px;"></div>
+
 			<div class="form-group submit text-center">
 				<input type="submit" value="Submit Application"  class="btn btn-primary"/>
 			</div>
