@@ -37,7 +37,7 @@ if ($_POST) {
 		if (!doesAppExist($email)) {
 
 			// BUILD QUERY
-			$query = "INSERT INTO `asmdss_apply`.`moderator_apps` (name, email, facebook_profile, availability, comptime, mil_exp, other_skills, justification)	VALUES (:name, :email, :profile, :availability, :comptime, :mil_exp, :other, :justification);";
+			$query = "INSERT INTO `asmdss_apply`.`moderator_apps` (name, email, facebook_profile, availability, comptime, mil_exp, other_skills, justification, user_ip)	VALUES (:name, :email, :profile, :availability, :comptime, :mil_exp, :other, :justification, :ip);";
 			$stmt = $pdo->prepare($query);
 
 			try {
@@ -52,7 +52,8 @@ if ($_POST) {
 						':mil_exp' => $experience,
 						':other' => $otherskills,
 						':justification' => $justification,
-						':availability' => $availability
+						':availability' => $availability,
+						':IP' => getIP();
 						)
 					);
 
