@@ -32,7 +32,7 @@ function getIP()
 
     $tmp = getenv("HTTP_X_FORWARDED_FOR");
     if( $tmp && !strcasecmp( $tmp, "unknown"))
-        return $tmp
+        return $tmp;
 
     // no sense in testing SERVER after this. 
     // $_SERVER[ 'REMOTE_ADDR' ] == gentenv( 'REMOTE_ADDR' );
