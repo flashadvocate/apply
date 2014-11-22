@@ -17,7 +17,7 @@
 		<legend><h1>ASMDSS <small>Moderator Application</small></h1></legend>
 		<div class="message"></div>
 
-		<p>Thank you for your interest in becoming a part of the ASMDSS staff. Please be as complete and as honest as you can with your information. Please allow 1-2 weeks for us to respond to your application.</p>
+		<p class="intro">Thank you for your interest in becoming a part of the ASMDSS staff. Please be as complete and as honest as you can with your information. Please allow 1-2 weeks for us to respond to your application.</p>
 		<div style="height: 15px;"></div>
 
 		<form class="form-vertical" method="post" id="mod-app" accept-charset="UTF-8">
@@ -57,12 +57,15 @@
 								</div>
 
 
-								<!-- Textarea -->
 								<div class="form-group">
 									<label class="control-label" for="comptime">How often are you at a computer or easily reachable?</label>
-									<div class="controls">           
-										<textarea id="comptime" name="comptime" placeholder="All the time, none of the time, leave me alone everytime, etc" class="form-control" required></textarea>
-									</div>
+									<select class="form-control" name="comptime" id="comptime">
+										<option>Almost always</option>
+										<option>Usually</option>
+										<option>Sometimes</option>
+										<option>Not often</option>
+										<option>Never</option>
+									</select>
 								</div>
 
 
