@@ -8,12 +8,13 @@ $(document).ready(function() {
 
             function(data) {
                 if (data['success'] === true) {
-                    $('.message').append('<div class="alert alert-success" role="alert">Your application was successfully submitted.</div>');
+                    $('.message').html('<div class="alert alert-success" role="alert">Your application was successfully submitted.</div>');
                     $('.alert').slideDown();
                     $('#mod-app').fadeOut();
 
                 } else if (data['success'] === false) {
-                    $('.message').append("<div class=\"alert alert-danger\" role=\"alert\">" + data['message'] + "</div>");
+                    $('.message').html("<div class=\"alert alert-danger\" role=\"alert\">" + data['message'] + "</div>");
+                    $('.email').addClass('has-error');
                     $('.alert').slideDown();
                 }
 
