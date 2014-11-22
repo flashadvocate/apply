@@ -1,17 +1,19 @@
-$("#mod-app").submit(function(event) {
-	event.preventDefault();
+$(document).ready(function() {
+    $("#mod-app").submit(function(event) {
+        event.preventDefault();
 
-    $.post('application/submit.php',
+        $.post('application/submit.php',
 
-        $(this).serialize(),
+            $(this).serialize(),
 
-        function(data) {
-            if (data['success'] === true) {
-                console.log(data['message']);
-                
-            } else if (data['success'] === false) {
-                console.log(data['message']);
-            }
+            function(data) {
+                if (data['success'] === true) {
+                    console.log(data['message']);
 
-        }, 'json');
+                } else if (data['success'] === false) {
+                    console.log(data['message']);
+                }
+
+            }, 'json');
+    });
 });
