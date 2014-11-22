@@ -57,7 +57,7 @@ if ($_POST) {
 					);
 
 				// FORM SUCCESSFUL
-				$out[] = ('success' => true, 'message' => 'Your form was successfully submitted');
+				$out = array('success' > true, 'message' => 'Your form was successfully submitted');
 
 			// PDO ERROR!
 			} catch (PDOException $e) {
@@ -68,14 +68,14 @@ if ($_POST) {
 
 		// EXISTING APPLICATION (OR EMAIL USED ALREADY)
 		} else {
-			$out[] = ('success' => false, 'message' => 'It appears an application already exists with that email');
+			$out = array('success' => false, 'message' => 'It appears an application already exists with that email');
 			die;
 		}
 	}
 
 // SUCCESS
 } else {
-	$out[] = ('success' => false, 'message' => 'No data was submitted!');
+	$out = array('success' => false, 'message' => 'No data was submitted!');
 	die;
 }
 
