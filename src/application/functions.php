@@ -3,6 +3,17 @@
 error_reporting(E_ALL);
 ini_set('display_errors', '1');
 
+function define_pages() {
+    
+    // build page rules for routing system
+    $rules = array(
+        'moderator' => "/moderator",
+        'home' => "/"
+        );
+    
+    return $rules;
+}
+
 function db_connect() {
 
 	global $pdo;

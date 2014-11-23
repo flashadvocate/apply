@@ -1,0 +1,6 @@
+RewriteEngine On
+RewriteRule ^forms/.*$ index.php
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ index.php [QSA,L]
+RewriteCond %{REQUEST_URI} ^/(cgi-bin|css|images)/?.*$ [NC]

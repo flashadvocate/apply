@@ -1,10 +1,9 @@
 $(document).ready(function() {
 
-
     $("#mod-app").submit(function(event) {
         event.preventDefault();
 
-        $.post('../../application/submit.php',
+        $.post('/apply/src/application/actions/submit.php',
 
             $(this).serialize(),
 
@@ -24,7 +23,6 @@ $(document).ready(function() {
 
             }, 'json');
     });
-
 
     $(".email").on("input", function() {
         $('input[type="submit"]').removeAttr('disabled');
