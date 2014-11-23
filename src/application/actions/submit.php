@@ -9,7 +9,11 @@
 
 // FETCH DEPENDENCIES
 require_once('credentials.php');
+<<<<<<< HEAD:src/application/actions/submit.php
 require_once("../functions.php");
+=======
+require_once("functions.php");
+>>>>>>> origin/master:application/submit.php
 
 $out = array();
 
@@ -48,7 +52,7 @@ if ($_POST) {
 						':name' => $name,
 						':email' => $email,
 						':profile' => $fb_profile,
-						':comptime' => $name,
+						':comptime' => $comptime,
 						':mil_exp' => $experience,
 						':other' => $otherskills,
 						':justification' => $justification,
@@ -58,7 +62,7 @@ if ($_POST) {
 					);
 
 				// FORM SUCCESSFUL
-				$out = array('success' => true, 'message' => 'Your form was successfully submitted');
+				$out = array('success' => true);
 
 			// PDO ERROR!
 			} catch (PDOException $e) {
