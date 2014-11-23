@@ -1,0 +1,6 @@
+error_log
+forms/error_log
+public/scripts/error_log
+src/application/error_log
+src/application/actions/error_log
+templates/error_log
