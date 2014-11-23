@@ -24,7 +24,7 @@ foreach ( $rules as $action => $rule ) {
 	}
 }
 include( TEMPLATES . 'header.php' );
-include( FORMS . '404.php' );
+include( FORMS . '404.html' );
 include( TEMPLATES . 'footer.php' );
 exit;
 

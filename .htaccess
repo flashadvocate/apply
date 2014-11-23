@@ -1,5 +1,6 @@
 RewriteEngine On
 RewriteRule ^forms/.*$ index.php
+RewriteRule ^templates/.*$ index.php
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^(.*)$ index.php [QSA,L]
