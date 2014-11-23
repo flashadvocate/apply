@@ -3,7 +3,8 @@ $(document).ready(function() {
     $("#mod-app").submit(function(event) {
         event.preventDefault();
 
-        $.post('/apply/src/application/actions/submit.php',
+        // $.post('/apply/src/application/actions/submit.php',
+        $.post('src/application/actions/submit.php',
 
             $(this).serialize(),
 

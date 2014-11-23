@@ -9,11 +9,7 @@
 
 // FETCH DEPENDENCIES
 require_once('credentials.php');
-<<<<<<< HEAD:src/application/actions/submit.php
 require_once("../functions.php");
-=======
-require_once("functions.php");
->>>>>>> origin/master:application/submit.php
 
 $out = array();
 
