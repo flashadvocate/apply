@@ -7,7 +7,7 @@
 require_once("src/application/functions.php");
 
 define( 'FORMS', dirname( __FILE__ ) . '/forms/' );
-define( 'TEMPLATES', dirname( __FILE__ ) . '/templates/' );
+define( 'TEMPLATES', dirname( __FILE__ ) . '/public/templates/' );
 
 $uri = rtrim( dirname($_SERVER["SCRIPT_NAME"]), '/' );
 $uri = '/' . trim( str_replace( $uri, '', $_SERVER['REQUEST_URI'] ), '/' );
