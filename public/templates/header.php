@@ -1,3 +1,17 @@
+<?php
+
+if (isset($_GET['parse_apps_and_email'])) {
+	if (doParseAndEmail()) {
+		echo "Applications successfully emailed";
+	} else {
+		echo "Applications failed to parse";
+	}
+	die;
+}
+
+?>
+
+
 <!DOCTYPE html>
 <html>
 <head>

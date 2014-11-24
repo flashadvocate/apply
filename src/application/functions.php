@@ -4,7 +4,7 @@ error_reporting(E_ALL);
 ini_set('display_errors', '1');
 
 function define_pages() {
-    
+
     // build page rules for routing system
     $rules = array(
         'moderator' => "/moderator",
@@ -47,6 +47,65 @@ function getIP() {
     }
     return $the_ip;
 }
+
+function doParseAndEmail() {
+
+    /**
+     * parses applications and emails them
+     * WARNING: sends ALL apps
+     */
+    
+    global $pdo;
+
+    if (db_connect()) {
+
+        try {
+
+            $stmt = $pdo->prepare("SELECT name, email, facebook_profile, availability, comptime, mil_exp, other_skills, justification, user_ip, date FROM `asmdss_apply`.`moderator_apps`");
+            $stmt->execute();
+            $result = $stmt->fetchAll();
+
+            foreach($result as $row) {
+
+                    // email content
+                $to = APP_EMAIL;
+                $subject = "Mod app - " . $row['name'];
+                $message = "
+
+                <html>
+                <body>
+                    <p>A moderator application has been received from " . $row['email'] . " on " . $row['date'] . ". The content is as follows:</p>
+                    <p>
+                        <strong>Name</strong>: " . $row['name'] . "<br />
+                        <strong>Email</strong>: " . $row['email'] . "<br />
+                        <strong>Facebook</strong>: " . $row['facebook_profile'] . "<br /><br />
+                        <strong>Availability</strong>: " . $row['availability'] . "<br />
+                        <strong>Computer Time</strong>: " . $row['comptime'] . "<br />
+                        <strong>Mil. Experience</strong>: " . $row['mil_exp'] . "<br /><br />
+                        <strong>Other Skills</strong>: " . $row['other_skills'] . "<br /><br />
+                        <strong>Justification</strong>: " . $row['justification'] . "
+                    </p>
+                </body>
+                </html>";
+
+                $headers  = 'MIME-Version: 1.0' . "\r\n";
+                $headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
+                $headers .= APP_EMAIL . "\r\n";
+                $headers .= 'From: ASMDSS Application System <webteam@asmdss.com>' . "\r\n"; 
+
+                mail($to, $subject, $message, $headers);
+                echo "Sent an email<br />";
+                sleep(2);
+            }
+
+        } catch (PDOException $e) {
+            echo "ERROR: " . $e->getMessage();
+            die;
+        }
+    }
+
+}
+
 
 function doesAppExist($string) {
     global $pdo;

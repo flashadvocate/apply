@@ -4,6 +4,7 @@
  * modulate forms into pretty router
  */
 
+require_once('credentials.php');
 require_once("src/application/functions.php");
 
 define( 'FORMS', dirname( __FILE__ ) . '/forms/' );
