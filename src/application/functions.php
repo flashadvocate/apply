@@ -67,7 +67,7 @@ function doParseAndEmail() {
 
             foreach($result as $row) {
 
-                    // email content
+                // email content
                 $to = APP_EMAIL;
                 $subject = "Mod app - " . $row['name'];
                 $message = "
