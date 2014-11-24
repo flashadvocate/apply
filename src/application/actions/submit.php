@@ -57,6 +57,37 @@ if ($_POST) {
 						)
 					);
 
+				// EMAIL APP CONTENTS
+				$to = APP_EMAIL;
+				$subject = "Mod app - " . $name;
+
+				$message = "
+
+				<html>
+				<body>
+					<p>A moderator application has been received from " . $email . " on " . date("F j, Y, g:i a") . ". The content is as follows:</p>
+					<p>
+						<strong>Name</strong>: " . $name . "<br />
+						<strong>Email</strong>: " . $email . "<br />
+						<strong>Facebook</strong>: " . $fb_profile . "<br /><br />
+						<strong>Availability</strong>: " . $availability . "<br />
+						<strong>Computer Time</strong>: " . $comptime . "<br />
+						<strong>Mil. Experience</strong>: " . $experience . "<br /><br />
+						<strong>Other Skills</strong>: " . $otherskills . "<br /><br />
+						<strong>Justification</strong>: " . $justification . "
+					</p>
+				</body>
+				</html>
+
+				";
+
+				$headers  = 'MIME-Version: 1.0' . "\r\n";
+				$headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
+				$headers .= APP_EMAIL . "\r\n";
+				$headers .= 'From: ASMDSS Application System <devteam@asmdss.com>' . "\r\n"; 
+
+				mail($to, $subject, $message, $headers);
+
 				// FORM SUCCESSFUL
 				$out = array('success' => true);
 
