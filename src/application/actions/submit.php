@@ -59,13 +59,15 @@ if ($_POST) {
 
 				// EMAIL APP CONTENTS
 				$to = APP_EMAIL;
-				$subject = "Mod app - " . $row['name'];
+				$subject = "Mod app - " . $name;
 
 				$message = "
 
 				<html>
 				<body>
-					<p>A moderator application has been received from " . $row['email'] . " on " . $row['date'] . ". The content is as follows:</p>
+
+					<p>A moderator application has been received from " . $email . " on " . date("F j, Y, g:i a") . ". The content is as follows:</p>
+
 					<p>
 						<strong>Name</strong>: " . $name . "<br />
 						<strong>Email</strong>: " . $email . "<br />
